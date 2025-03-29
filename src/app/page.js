@@ -24,8 +24,14 @@ export default function HomePage() {
         <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
           {/* Left: Logo */}
           <div className="flex items-center gap-2 text-xl font-bold">
-            <Clock size={24} />
-            Nestle-In
+            <Image
+              src="/kangaroo.jpeg"
+              alt="Nestle-In logo"
+              width={36}
+              height={36}
+              className="rounded-full"
+            />
+            <span>Nestle-In</span>
           </div>
 
           {/* Desktop Nav */}
@@ -131,22 +137,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      
-<section className="max-w-4xl mx-auto px-6 py-16">
-  <h2 className="text-3xl font-bold mb-8 text-center">Get Help</h2>
-  <div className="rounded-lg overflow-hidden shadow-lg">
-    <iframe
-      src="https://form.typeform.com/to/GeiiqZNY"
-      width="100%"
-      height="800"
-      frameBorder="0"
-      marginHeight="0"
-      marginWidth="0"
-    >
-      Loading…
-    </iframe>
-  </div>
-</section>
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold mb-8 text-center">Get Help</h2>
+        <div className="rounded-lg overflow-hidden shadow-lg">
+          <iframe
+            src="https://form.typeform.com/to/GeiiqZNY"
+            width="100%"
+            height="800"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+          >
+            Loading…
+          </iframe>
+        </div>
+      </section>
 
       {/* STUDENT HOMELESSNESS SECTION */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
@@ -261,7 +266,9 @@ export default function HomePage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-base">Where to sleep tonight?</h3>
+              <h3 className="font-semibold text-base">
+                Where to sleep tonight?
+              </h3>
               <p className="text-gray-600 text-sm">
                 Near every sleeping pod location we installed two shower cabins
                 for you to make yourself fresh and ready to fight your battles
@@ -269,7 +276,9 @@ export default function HomePage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-base">Where to take a shower?</h3>
+              <h3 className="font-semibold text-base">
+                Where to take a shower?
+              </h3>
               <p className="text-gray-600 text-sm">
                 How to book your sleeping pod and/or shower time
               </p>
@@ -456,91 +465,94 @@ export default function HomePage() {
         </div>
       </section>
 
-{/* FOOTER */}
-<footer className="bg-white py-16 px-6 mt-20 border-t">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-    {/* Brand + Socials */}
-    <div>
-      <h3 className="text-xl font-semibold mb-6">NESTLE IN</h3>
-      <div className="flex space-x-4 text-gray-500">
-        <a href="#" aria-label="Facebook" className="hover:text-gray-800">
-          <i className="fab fa-facebook-f">📘</i>
-        </a>
-        <a href="#" aria-label="LinkedIn" className="hover:text-gray-800">
-          <i className="fab fa-linkedin-in">💼</i>
-        </a>
-        <a href="#" aria-label="YouTube" className="hover:text-gray-800">
-          <i className="fab fa-youtube">▶️</i>
-        </a>
-        <a href="#" aria-label="Instagram" className="hover:text-gray-800">
-          <i className="fab fa-instagram">📸</i>
-        </a>
-      </div>
-    </div>
+      {/* FOOTER */}
+      <footer className="bg-white py-16 px-6 mt-20 border-t">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+          {/* Brand + Socials */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6">NESTLE IN</h3>
+            <div className="flex space-x-4 text-gray-500">
+              <a href="#" aria-label="Facebook" className="hover:text-gray-800">
+                <i className="fab fa-facebook-f">📘</i>
+              </a>
+              <a href="#" aria-label="LinkedIn" className="hover:text-gray-800">
+                <i className="fab fa-linkedin-in">💼</i>
+              </a>
+              <a href="#" aria-label="YouTube" className="hover:text-gray-800">
+                <i className="fab fa-youtube">▶️</i>
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="hover:text-gray-800"
+              >
+                <i className="fab fa-instagram">📸</i>
+              </a>
+            </div>
+          </div>
 
-    {/* ABOUT US */}
-    <div>
-      <h4 className="font-semibold mb-3">ABOUT US</h4>
-      <ul className="text-sm text-gray-600 space-y-2">
-        <li>
-          <Link href="/contact" className="hover:underline">
-            Contact us
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" className="hover:underline">
-            Who we are and what we do?
-          </Link>
-        </li>
-      </ul>
-    </div>
+          {/* ABOUT US */}
+          <div>
+            <h4 className="font-semibold mb-3">ABOUT US</h4>
+            <ul className="text-sm text-gray-600 space-y-2">
+              <li>
+                <Link href="/contact" className="hover:underline">
+                  Contact us
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:underline">
+                  Who we are and what we do?
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-    {/* Am I Homeless? */}
-    <div>
-      <h4 className="font-semibold mb-3">Am I Homelessness?</h4>
-      <ul className="text-sm text-gray-600 space-y-2">
-        <li>
-          <a
-            href="https://forms.gle/TYuojmifQnKE4uam9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Take a quiz
-          </a>
-        </li>
-        <li>
-          <Link href="/hidden-homelessness" className="hover:underline">
-            Read about hidden homelessness
-          </Link>
-        </li>
-      </ul>
-    </div>
+          {/* Am I Homeless? */}
+          <div>
+            <h4 className="font-semibold mb-3">Am I Homelessness?</h4>
+            <ul className="text-sm text-gray-600 space-y-2">
+              <li>
+                <a
+                  href="https://forms.gle/TYuojmifQnKE4uam9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Take a quiz
+                </a>
+              </li>
+              <li>
+                <Link href="/hidden-homelessness" className="hover:underline">
+                  Read about hidden homelessness
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-    {/* People & Stories */}
-    <div>
-      <h4 className="font-semibold mb-3">People & Stories</h4>
-      <ul className="text-sm text-gray-600 space-y-2">
-        <li>
-          <Link href="#" className="hover:underline">
-            Students’ stories
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:underline">
-            Government support
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:underline">
-            Partners
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
+          {/* People & Stories */}
+          <div>
+            <h4 className="font-semibold mb-3">People & Stories</h4>
+            <ul className="text-sm text-gray-600 space-y-2">
+              <li>
+                <Link href="#" className="hover:underline">
+                  Students’ stories
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="hover:underline">
+                  Government support
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="hover:underline">
+                  Partners
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

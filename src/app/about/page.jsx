@@ -29,7 +29,14 @@ export default function AboutPage() {
       <header className="w-full border-b shadow-sm bg-white">
         <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
           <div className="flex items-center gap-2 text-xl font-bold">
-            <Clock size={24} /> NESTLE IN
+            <Image
+              src="/kangaroo.jpeg"
+              alt="Nestle-In logo"
+              width={36}
+              height={36}
+              className="rounded-full"
+            />
+            <span>Nestle-In</span>
           </div>
 
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
