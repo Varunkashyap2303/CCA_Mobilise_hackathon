@@ -456,52 +456,91 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-white py-16 px-6 mt-20 border-t">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand + Socials */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6">NESTLE-IN</h3>
-            <div className="flex space-x-4 text-gray-500">
-              {/* Replace these with actual icon components if you use lucide-react or FontAwesome */}
-              <span className="hover:text-gray-800 cursor-pointer">🌐</span>
-              <span className="hover:text-gray-800 cursor-pointer">💼</span>
-              <span className="hover:text-gray-800 cursor-pointer">▶️</span>
-              <span className="hover:text-gray-800 cursor-pointer">📸</span>
-            </div>
-          </div>
+{/* FOOTER */}
+<footer className="bg-white py-16 px-6 mt-20 border-t">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    {/* Brand + Socials */}
+    <div>
+      <h3 className="text-xl font-semibold mb-6">NESTLE IN</h3>
+      <div className="flex space-x-4 text-gray-500">
+        <a href="#" aria-label="Facebook" className="hover:text-gray-800">
+          <i className="fab fa-facebook-f">📘</i>
+        </a>
+        <a href="#" aria-label="LinkedIn" className="hover:text-gray-800">
+          <i className="fab fa-linkedin-in">💼</i>
+        </a>
+        <a href="#" aria-label="YouTube" className="hover:text-gray-800">
+          <i className="fab fa-youtube">▶️</i>
+        </a>
+        <a href="#" aria-label="Instagram" className="hover:text-gray-800">
+          <i className="fab fa-instagram">📸</i>
+        </a>
+      </div>
+    </div>
 
-          {/* Column 1: Updates */}
-          <div>
-            <h4 className="font-semibold mb-3">Latest updates</h4>
-            <ul className="text-sm text-gray-600 space-y-2">
-              <li>New locations</li>
-              <li>We’ve got new pods</li>
-              <li>Our showers are even more hygienic now!</li>
-            </ul>
-          </div>
+    {/* ABOUT US */}
+    <div>
+      <h4 className="font-semibold mb-3">ABOUT US</h4>
+      <ul className="text-sm text-gray-600 space-y-2">
+        <li>
+          <Link href="/contact" className="hover:underline">
+            Contact us
+          </Link>
+        </li>
+        <li>
+          <Link href="/about" className="hover:underline">
+            Who we are and what we do?
+          </Link>
+        </li>
+      </ul>
+    </div>
 
-          {/* Column 2: Bookings */}
-          <div>
-            <h4 className="font-semibold mb-3">Bookings</h4>
-            <ul className="text-sm text-gray-600 space-y-2">
-              <li>Book sleeping pod</li>
-              <li>Book shower</li>
-              <li>How it works?</li>
-            </ul>
-          </div>
+    {/* Am I Homeless? */}
+    <div>
+      <h4 className="font-semibold mb-3">Am I Homelessness?</h4>
+      <ul className="text-sm text-gray-600 space-y-2">
+        <li>
+          <a
+            href="https://forms.gle/TYuojmifQnKE4uam9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Take a quiz
+          </a>
+        </li>
+        <li>
+          <Link href="/hidden-homelessness" className="hover:underline">
+            Read about hidden homelessness
+          </Link>
+        </li>
+      </ul>
+    </div>
 
-          {/* Column 3: People & Stories */}
-          <div>
-            <h4 className="font-semibold mb-3">People & Stories</h4>
-            <ul className="text-sm text-gray-600 space-y-2">
-              <li>Students’ stories</li>
-              <li>Government support</li>
-              <li>Sponsors</li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+    {/* People & Stories */}
+    <div>
+      <h4 className="font-semibold mb-3">People & Stories</h4>
+      <ul className="text-sm text-gray-600 space-y-2">
+        <li>
+          <Link href="#" className="hover:underline">
+            Students’ stories
+          </Link>
+        </li>
+        <li>
+          <Link href="#" className="hover:underline">
+            Government support
+          </Link>
+        </li>
+        <li>
+          <Link href="#" className="hover:underline">
+            Partners
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
     </main>
   );
 }
