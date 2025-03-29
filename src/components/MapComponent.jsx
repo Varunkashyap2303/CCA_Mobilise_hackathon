@@ -35,14 +35,9 @@ const bedRedIcon = new L.Icon({
 });
 
 export default function MapComponent() {
-  const [isClient, setIsClient] = useState(false);
   const [stories, setStories] = useState([]);
   const [pods, setPods] = useState([]);
   const [filter, setFilter] = useState("all");
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,8 +57,6 @@ export default function MapComponent() {
 
     fetchData();
   }, []);
-
-  if (!isClient) return null; // Prevent SSR errors
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -105,7 +98,7 @@ export default function MapComponent() {
       </div>
 
       {/* 🗺️ Map */}
-      <MapContainer center={[-28.5, 134.5]} zoom={4.5} className="h-full w-full z-0">
+      <MapContainer center={[-28.5, 134.5]} zoom={4.5} className="h-full w-full">
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {/* 🧍 Homelessness Stories */}
@@ -118,7 +111,10 @@ export default function MapComponent() {
                 position={[parseFloat(s.lat), parseFloat(s.lng)]}
                 icon={personIcon}
               >
-                <Popup>{s.description}</Popup>
+                <Popup>
+                  <strong>Story</strong><br />
+                  {s.description}
+                </Popup>
               </Marker>
             ))}
 
@@ -130,13 +126,16 @@ export default function MapComponent() {
               if (filter === "occupied") return p.status !== "Available";
               return true;
             })
-            .map((p) => (
+            .map((p, index) => (
               <Marker
-                key={`pod-${p.id || `${p.lat}-${p.lng}`}`}
+                key={`pod-${p.id || index}`}
                 position={[p.lat, p.lng]}
                 icon={p.status === "Available" ? bedGreenIcon : bedRedIcon}
               >
-                <Popup>Sleeping Pod - {p.status}</Popup>
+                <Popup>
+                  <strong>{p.status}</strong><br />
+                  {p.address}
+                </Popup>
               </Marker>
             ))}
       </MapContainer>
