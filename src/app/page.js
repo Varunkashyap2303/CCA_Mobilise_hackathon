@@ -225,14 +225,14 @@ export default function HomePage() {
 
           {/* Buttons */}
           <div className="flex gap-4">
-            <a
+            {/* <a
               href="https://forms.gle/TYuojmifQnKE4uam9"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-600 text-white px-6 py-3 rounded-md text-base font-medium hover:bg-blue-700 transition"
             >
               Take a quiz
-            </a>
+            </a> */}
             <Link
               href="/hidden-homelessness"
               className="bg-gray-200 text-black px-6 py-3 rounded-md text-base font-medium hover:bg-gray-300 transition"
