@@ -452,25 +452,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BOOK YOUR SAFE SLEEP SECTION */}
-      <section className="bg-gray-50 py-16 px-6 mt-20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Heading */}
-          <h2 className="text-3xl font-bold text-center md:text-left">
-            Book your safe sleep
-          </h2>
-
-          {/* Booking Buttons */}
-          <div className="flex gap-4">
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-md text-base font-medium hover:bg-blue-700 transition">
-              Book sleeping pod
-            </button>
-            <button className="bg-gray-200 text-black px-6 py-3 rounded-md text-base font-medium hover:bg-gray-300 transition">
-              Book shower
-            </button>
-          </div>
-        </div>
-      </section>
 
       {/* FOOTER */}
       <footer className="bg-white py-16 px-6 mt-20 border-t">
