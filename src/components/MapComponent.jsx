@@ -6,9 +6,12 @@ import L from "leaflet";
 
 // Fix broken Leaflet default icons
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
 // 📍 Custom icon for stories
@@ -35,19 +38,35 @@ const bedRedIcon = new L.Icon({
 });
 
 export default function MapComponent() {
+  const [isClient, setIsClient] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   const [stories, setStories] = useState([]);
   const [pods, setPods] = useState([]);
   const [filter, setFilter] = useState("all");
 
+  // Set client state
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Delay rendering the map to avoid hydration issues
+  useEffect(() => {
+    if (isClient) {
+      const timeout = setTimeout(() => setShowMap(true), 0);
+      return () => clearTimeout(timeout);
+    }
+  }, [isClient]);
+
+  // Fetch data from MockAPI
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storiesRes = await fetch("https://67e5df4d18194932a5877bf0.mockapi.io/api/v1/stories");
-        const podsRes = await fetch("https://67e5df4d18194932a5877bf0.mockapi.io/api/v1/pods");
-
+        const [storiesRes, podsRes] = await Promise.all([
+          fetch("https://67e5df4d18194932a5877bf0.mockapi.io/api/v1/stories"),
+          fetch("https://67e5df4d18194932a5877bf0.mockapi.io/api/v1/pods"),
+        ]);
         const storiesData = await storiesRes.json();
         const podsData = await podsRes.json();
-
         setStories(storiesData);
         setPods(podsData);
       } catch (err) {
@@ -58,6 +77,10 @@ export default function MapComponent() {
     fetchData();
   }, []);
 
+  if (!showMap) {
+    return <div className="w-full h-screen bg-gray-100">Loading map...</div>;
+  }
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* 🌟 Floating Panel (Legend + Filter) */}
@@ -67,11 +90,19 @@ export default function MapComponent() {
         {/* 🧭 Legend */}
         <div className="space-y-2 text-gray-700">
           <div className="flex items-center space-x-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/2283/2283945.png" alt="Available Pod" className="w-5 h-5" />
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/2283/2283945.png"
+              alt="Available Pod"
+              className="w-5 h-5"
+            />
             <span>Available Pod</span>
           </div>
           <div className="flex items-center space-x-3">
-            <img src="https://cdn-icons-png.flaticon.com/512/9567/9567116.png" alt="Occupied Pod" className="w-5 h-5" />
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/9567/9567116.png"
+              alt="Occupied Pod"
+              className="w-5 h-5"
+            />
             <span>Occupied Pod</span>
           </div>
           <div className="flex items-center space-x-3">
@@ -82,7 +113,12 @@ export default function MapComponent() {
 
         {/* 🎛️ Filter Dropdown */}
         <div>
-          <label htmlFor="filter" className="block text-sm font-medium text-gray-700 mb-1">Show:</label>
+          <label
+            htmlFor="filter"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Show:
+          </label>
           <select
             id="filter"
             value={filter}
@@ -98,10 +134,15 @@ export default function MapComponent() {
       </div>
 
       {/* 🗺️ Map */}
-      <MapContainer center={[-28.5, 134.5]} zoom={4.5} className="h-full w-full">
+      <MapContainer
+        center={[-28.5, 134.5]}
+        zoom={4.5}
+        className="h-full w-full z-0"
+        scrollWheelZoom={false}
+      >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {/* 🧍 Homelessness Stories */}
+        {/* 📍 Stories */}
         {(filter === "all" || filter === "stories") &&
           stories
             .filter((s) => s.lat && s.lng)
@@ -112,28 +153,33 @@ export default function MapComponent() {
                 icon={personIcon}
               >
                 <Popup>
-                  <strong>Story</strong><br />
+                  <strong>Story</strong>
+                  <br />
                   {s.description}
                 </Popup>
               </Marker>
             ))}
 
-        {/* 🛏️ Sleeping Pods */}
-        {(filter === "all" || filter === "available" || filter === "occupied") &&
+        {/* 🛏️ Pods */}
+        {(filter === "all" ||
+          filter === "available" ||
+          filter === "occupied") &&
           pods
             .filter((p) => {
               if (filter === "available") return p.status === "Available";
               if (filter === "occupied") return p.status !== "Available";
               return true;
             })
+            .filter((p) => p.lat && p.lng)
             .map((p, index) => (
               <Marker
                 key={`pod-${p.id || index}`}
-                position={[p.lat, p.lng]}
+                position={[parseFloat(p.lat), parseFloat(p.lng)]}
                 icon={p.status === "Available" ? bedGreenIcon : bedRedIcon}
               >
                 <Popup>
-                  <strong>{p.status}</strong><br />
+                  <strong>{p.status}</strong>
+                  <br />
                   {p.address}
                 </Popup>
               </Marker>
