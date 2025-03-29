@@ -46,7 +46,7 @@ export default function HomePage() {
               Share love ♡
             </Link>
             <Link
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfXYZ123abc456/viewform"
+              href="https://forms.gle/TYuojmifQnKE4uam9"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
@@ -128,7 +128,24 @@ export default function HomePage() {
       Get involved
     </Link>
   </div>
-  
+
+</section>
+
+
+<section className="max-w-4xl mx-auto px-6 py-16">
+  <h2 className="text-3xl font-bold mb-8 text-center">Get Help</h2>
+  <div className="rounded-lg overflow-hidden shadow-lg">
+    <iframe
+      src="https://forms.gle/TYuojmifQnKE4uam9"
+      width="100%"
+      height="800"
+      frameBorder="0"
+      marginHeight="0"
+      marginWidth="0"
+    >
+      Loading…
+    </iframe>
+  </div>
 </section>
 
       {/* STUDENT HOMELESSNESS SECTION */}
