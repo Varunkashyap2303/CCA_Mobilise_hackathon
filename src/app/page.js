@@ -248,20 +248,20 @@ export default function HomePage() {
         {/* Left: Text & Info */}
         <div className="space-y-8">
           <h2 className="text-3xl font-bold">
-            Live Map of Sleeping Pods <br className="hidden sm:block" /> and
-            Showers Platform
+            Live Map of Free Emergency <br className="hidden sm:block" /> and
+            Accomodation Showers
           </h2>
 
           <div className="space-y-6 text-left">
             <div>
-              <h3 className="font-semibold text-base">Sleeping pods</h3>
+              <h3 className="font-semibold text-base">Am I Homeless?</h3>
               <p className="text-gray-600 text-sm">
                 What they are and where you can find them
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-base">Showers</h3>
+              <h3 className="font-semibold text-base">Where to sleep tonight?</h3>
               <p className="text-gray-600 text-sm">
                 Near every sleeping pod location we installed two shower cabins
                 for you to make yourself fresh and ready to fight your battles
@@ -269,7 +269,7 @@ export default function HomePage() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-base">Booking</h3>
+              <h3 className="font-semibold text-base">Where to take a shower?</h3>
               <p className="text-gray-600 text-sm">
                 How to book your sleeping pod and/or shower time
               </p>
@@ -277,10 +277,10 @@ export default function HomePage() {
 
             <div className="flex flex-wrap gap-4 pt-2">
               <button className="bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-800 transition">
-                Book sleeping pod
+                Where to sleep?
               </button>
               <button className="bg-gray-200 text-black px-5 py-2 rounded-md font-medium hover:bg-gray-300 transition">
-                Book shower
+                Where to shower?
               </button>
               <Link href="/map">
                 <button className="bg-blue-600 text-white px-5 py-2 rounded-md font-medium hover:bg-blue-700 transition">
