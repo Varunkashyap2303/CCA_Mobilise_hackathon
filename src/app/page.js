@@ -99,39 +99,39 @@ export default function HomePage() {
         )}
       </header>
 
-{/* HERO SECTION */}
-<section className="px-6 pt-12 max-w-6xl mx-auto bg-white">
-  {/* Image */}
-  <div className="w-full h-[500px] rounded-lg overflow-hidden">
-    <Image
-      src="/jon-tyson-zzzsVQvtpDA-unsplash.jpg"
-      alt="Hero image - student homelessness"
-      width={1200}
-      height={500}
-      priority
-      className="w-full h-full object-cover"
-    />
-  </div>
+      {/* HERO SECTION */}
+      <section className="px-6 pt-12 max-w-6xl mx-auto bg-white">
+        {/* Image */}
+        <div className="w-full h-[500px] rounded-lg overflow-hidden">
+          <Image
+            src="/jon-tyson-zzzsVQvtpDA-unsplash.jpg"
+            alt="Hero image - student homelessness"
+            width={1200}
+            height={500}
+            priority
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-  {/* Text content below image */}
-  <div className="mt-10 text-center max-w-3xl mx-auto">
-    <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
-      NESTLE-IN
-    </h1>
-    <p className="text-lg sm:text-xl font-medium text-gray-700 leading-snug mb-6">
-      Shining a light on student homelessness—learn, quiz, and find a safe spot when you need it!
-    </p>
-    <Link
-      href="#"
-      className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-medium hover:bg-blue-700 transition"
-    >
-      Get involved
-    </Link>
-  </div>
+        {/* Text content below image */}
+        <div className="mt-10 text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
+            NESTLE-IN
+          </h1>
+          <p className="text-lg sm:text-xl font-medium text-gray-700 leading-snug mb-6">
+            Shining a light on student homelessness—learn, quiz, and find a safe
+            spot when you need it!
+          </p>
+          <Link
+            href="#"
+            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-medium hover:bg-blue-700 transition"
+          >
+            Get involved
+          </Link>
+        </div>
+      </section>
 
-</section>
-
-{/* 
+      {/* 
 <section className="max-w-4xl mx-auto px-6 py-16">
   <h2 className="text-3xl font-bold mb-8 text-center">Get Help</h2>
   <div className="rounded-lg overflow-hidden shadow-lg">
@@ -211,6 +211,34 @@ export default function HomePage() {
                 for your temporary yet important challenge.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AM I HOMELESS? SECTION */}
+      <section className="bg-gray-50 py-16 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-center md:text-left">
+            Am I Homeless?
+          </h2>
+
+          {/* Buttons */}
+          <div className="flex gap-4">
+            <a
+              href="https://forms.gle/TYuojmifQnKE4uam9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 text-white px-6 py-3 rounded-md text-base font-medium hover:bg-blue-700 transition"
+            >
+              Take a quiz
+            </a>
+            <Link
+              href="/hidden-homelessness"
+              className="bg-gray-200 text-black px-6 py-3 rounded-md text-base font-medium hover:bg-gray-300 transition"
+            >
+              Read about Hidden Homelessness
+            </Link>
           </div>
         </div>
       </section>
