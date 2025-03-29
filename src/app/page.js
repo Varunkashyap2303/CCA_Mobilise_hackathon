@@ -25,7 +25,7 @@ export default function HomePage() {
           {/* Left: Logo */}
           <div className="flex items-center gap-2 text-xl font-bold">
             <Clock size={24} />
-            Snoozebox
+            Nestle-In
           </div>
 
           {/* Desktop Nav */}
@@ -116,7 +116,7 @@ export default function HomePage() {
   {/* Text content below image */}
   <div className="mt-10 text-center max-w-3xl mx-auto">
     <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
-      SNOOZE BOX
+      NESTLE-IN
     </h1>
     <p className="text-lg sm:text-xl font-medium text-gray-700 leading-snug mb-6">
       Shining a light on student homelessness—learn, quiz, and find a safe spot when you need it!
@@ -433,7 +433,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand + Socials */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">SNOOZE BOX</h3>
+            <h3 className="text-xl font-semibold mb-6">NESTLE-IN</h3>
             <div className="flex space-x-4 text-gray-500">
               {/* Replace these with actual icon components if you use lucide-react or FontAwesome */}
               <span className="hover:text-gray-800 cursor-pointer">🌐</span>
