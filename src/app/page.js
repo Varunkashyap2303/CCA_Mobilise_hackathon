@@ -110,7 +110,7 @@ export default function HomePage() {
         {/* Image */}
         <div className="w-full h-[500px] rounded-lg overflow-hidden">
           <Image
-            src="/jon-tyson-zzzsVQvtpDA-unsplash.jpg"
+            src="/nubelson-fernandes-3XDe63NEvZQ-unsplash.jpg"
             alt="Hero image - student homelessness"
             width={1200}
             height={500}
