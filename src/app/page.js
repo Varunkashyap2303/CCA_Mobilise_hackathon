@@ -1,32 +1,53 @@
-export default function Home() {
+// src/app/page.jsx
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-indigo-100 via-white to-pink-100 text-center">
-      {/* Glass Card */}
-      <div className="bg-white/70 backdrop-blur-2xl shadow-xl rounded-3xl p-10 max-w-2xl w-full border border-white/30">
-        {/* Title */}
-        <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500 animate-pulse mb-4">
-          🧭 See & Share
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-          A real-time map tracking homelessness stories & sleeping pods across Australia.  
-          Reclaim visibility. Rebuild empathy.
-        </p>
-
-        {/* Map Button */}
-        <a
-          href="/map"
-          className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:from-purple-700 hover:to-indigo-700 transition-all duration-300"
+    <main className="min-h-screen bg-white text-gray-900">
+      {/* NAVBAR */}
+      <header className="flex justify-between items-center px-6 py-4 border-b shadow-sm">
+        <div className="text-xl font-bold">Snoozebox</div>
+        <nav className="hidden md:flex space-x-6 text-sm font-medium">
+          <Link href="#">Sleeping pods</Link>
+          <Link href="#">Showers</Link>
+          <Link href="#">Stories</Link>
+          <Link href="#">Am I Homeless?</Link>
+        </nav>
+        <Link
+          href="#"
+          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 text-sm font-medium"
         >
-          🗺️ View Interactive Map
-        </a>
-      </div>
+          Help someone
+        </Link>
+      </header>
 
-      {/* Footer */}
-      <footer className="mt-10 text-sm text-gray-500">
-        Built for the <span className="font-semibold text-indigo-600">2025 Hackathon</span> · Powered by Mobilise · Designed with ❤️
-      </footer>
+      {/* HERO SECTION */}
+      <section className="px-6 py-12 max-w-5xl mx-auto text-center">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-4">SNOOZE BOX</h1>
+        <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+          Emergency accommodation (sleeping pods & showers) for students experiencing
+          short-term homelessness such as moving out, escaping family conflict, or needing a place to stay for a few nights.
+        </p>
+        <Link
+          href="#"
+          className="inline-block bg-black text-white px-6 py-3 rounded font-medium hover:bg-gray-800 transition"
+        >
+          Get yourself safe
+        </Link>
+
+        {/* Hero Image */}
+        <div className="mt-10">
+          <Image
+            src="/hero.jpg" // ⬅️ Add your actual image here
+            alt="Hero"
+            width={1000}
+            height={600}
+            className="rounded-lg w-full object-cover"
+          />
+        </div>
+      </section>
     </main>
   );
 }
