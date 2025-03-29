@@ -2,6 +2,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+// Prevent SSR issues with Leaflet
+const MapComponent = dynamic(() => import('@/components/MapComponent'), {
+  ssr: false,
+});
 
 export default function HomePage() {
   return (
@@ -106,6 +111,65 @@ export default function HomePage() {
         </div>
       </div>
     </section>
+
+
+
+    <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+  {/* Left: Text & Info */}
+  <div className="space-y-8">
+    <h2 className="text-3xl font-bold">
+      Live Map of Sleeping Pods <br className="hidden sm:block" /> and Showers Platform
+    </h2>
+
+    <div className="space-y-6 text-left">
+      <div>
+        <h3 className="font-semibold text-base">Sleeping pods</h3>
+        <p className="text-gray-600 text-sm">
+          What they are and where you can find them
+        </p>
+      </div>
+
+      <div>
+        <h3 className="font-semibold text-base">Showers</h3>
+        <p className="text-gray-600 text-sm">
+          Near every sleeping pod location we installed two shower cabins for you to make
+          yourself fresh and ready to fight your battles
+        </p>
+      </div>
+
+      <div>
+        <h3 className="font-semibold text-base">Booking</h3>
+        <p className="text-gray-600 text-sm">
+          How to book your sleeping pod and/or shower time
+        </p>
+      </div>
+
+      <div className="flex gap-4 pt-2">
+        <button className="bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-800 transition">
+          Book sleeping pod
+        </button>
+        <button className="bg-gray-200 text-black px-5 py-2 rounded-md font-medium hover:bg-gray-300 transition">
+          Book shower
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* Right: Embedded Map with button */}
+<div className="flex flex-col items-center gap-4">
+  <div className="w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+    <MapComponent />
+  </div>
+
+  <Link
+    href="/map"
+    className="bg-black text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 transition"
+  >
+    View Full Map
+  </Link>
+</div>
+</section>
+
 
     </main>
   );
