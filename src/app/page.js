@@ -131,7 +131,7 @@ export default function HomePage() {
 
 </section>
 
-
+{/* 
 <section className="max-w-4xl mx-auto px-6 py-16">
   <h2 className="text-3xl font-bold mb-8 text-center">Get Help</h2>
   <div className="rounded-lg overflow-hidden shadow-lg">
@@ -146,7 +146,7 @@ export default function HomePage() {
       Loading…
     </iframe>
   </div>
-</section>
+</section> */}
 
       {/* STUDENT HOMELESSNESS SECTION */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
