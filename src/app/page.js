@@ -1,31 +1,72 @@
 // src/app/page.jsx
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { Menu, X, Clock } from "lucide-react";
 const MapComponent = dynamic(() => import("@/components/MapComponent"), {
   ssr: false,
 });
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* NAVBAR */}
-      <header className="flex justify-between items-center px-6 py-4 border-b shadow-sm">
-        <div className="text-xl font-bold">Snoozebox</div>
-        <nav className="hidden md:flex space-x-6 text-sm font-medium">
+      
+      <header className="w-full border-b shadow-sm bg-white">
+      <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+        {/* Left: Logo */}
+        <div className="flex items-center gap-2 text-xl font-bold">
+          <Clock size={24} />
+          Snoozebox
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <Link href="#">Am I Homeless?</Link>
           <Link href="#">Sleeping pods</Link>
           <Link href="#">Showers</Link>
-          <Link href="#">Stories</Link>
-          <Link href="#">Am I Homeless?</Link>
+          <Link href="#" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            Chip in!
+          </Link>
+          <Link href="#" className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition">
+            Share love ♡
+          </Link>
+          <Link href="#" className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">
+            Get help
+          </Link>
         </nav>
-        <Link
-          href="#"
-          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 text-sm font-medium"
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
-          Help someone
-        </Link>
-      </header>
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {menuOpen && (
+        <div className="md:hidden px-6 pb-4 space-y-3 text-sm font-medium">
+          <Link href="#" className="block">Am I Homeless?</Link>
+          <Link href="#" className="block">Sleeping pods</Link>
+          <Link href="#" className="block">Showers</Link>
+          <Link href="#" className="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            Chip in!
+          </Link>
+          <Link href="#" className="block bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition">
+            Share love ♡
+          </Link>
+          <Link href="#" className="block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">
+            Get help
+          </Link>
+        </div>
+      )}
+    </header>
 
       {/* HERO SECTION */}
       <section className="px-6 py-12 max-w-5xl mx-auto text-center">
