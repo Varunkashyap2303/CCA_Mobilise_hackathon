@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-// Prevent SSR issues with Leaflet
 const MapComponent = dynamic(() => import('@/components/MapComponent'), {
   ssr: false,
 });
@@ -155,19 +154,10 @@ export default function HomePage() {
     </div>
   </div>
 
-  {/* Right: Embedded Map with button */}
-<div className="flex flex-col items-center gap-4">
+  {/* Right: Embedded Map */}
   <div className="w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden">
     <MapComponent />
   </div>
-
-  <Link
-    href="/map"
-    className="bg-black text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 transition"
-  >
-    View Full Map
-  </Link>
-</div>
 </section>
 
 
