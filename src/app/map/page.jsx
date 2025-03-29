@@ -1,15 +1,30 @@
+// src/components/MapComponent.jsx
 "use client";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
-// Load MapComponent only on the client side
-const MapComponent = dynamic(() => import("@/components/MapComponent"), {
-  ssr: false,
-});
+export default function MapComponent() {
+  const [isClient, setIsClient] = useState(false);
 
-export default function MapPage() {
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null;
+
   return (
-    <main className="p-6">
-      <MapComponent />
-    </main>
+    <MapContainer
+      center={[-33.8688, 151.2093]} // Sydney
+      zoom={12}
+      scrollWheelZoom={false}
+      style={{ height: "100%", width: "100%" }}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; OpenStreetMap contributors"
+      />
+      {/* Add markers here */}
+    </MapContainer>
   );
 }
