@@ -316,7 +316,7 @@ export default function HomePage() {
           {/* Card 1 */}
           <div className="flex flex-col">
             <Image
-              src="/elizabeth-lies-PIQCA1ReSgU-unsplash.jpg" // replace with correct file path
+              src="/david-kennedy-4WnlU07YZ98-unsplash.jpg" // replace with correct file path
               alt="Student helping peer"
               width={600}
               height={400}
@@ -324,16 +324,21 @@ export default function HomePage() {
             />
             <div className="mt-4">
               <h3 className="text-lg font-semibold mb-1">
-                Help your peer is easier than you think
+                Helping your peer is easier than you think
               </h3>
-              <p className="text-sm text-gray-600">Would you give</p>
+              <p className="text-sm text-gray-600">
+                Would you spare just $1 or $5 each week to help a friend in
+                need? By donating, you can support not just one or two friends,
+                but many students who need it now—and who knows, they might
+                return the favor someday!
+              </p>
             </div>
           </div>
 
           {/* Card 2 */}
           <div className="flex flex-col">
             <Image
-              src="/alexander-grey-v6nyYt7lQ-Y-unsplash.jpg" // replace with correct file path
+              src="/lisanto-KiJwg-cZL1c-unsplash.jpg" // replace with correct file path
               alt="Girl sleeping on couch"
               width={600}
               height={400}
@@ -341,12 +346,14 @@ export default function HomePage() {
             />
             <div className="mt-4">
               <h3 className="text-lg font-semibold mb-2">
-                What is homelessness?
+              Share love ♡ 
               </h3>
               <p className="text-sm text-gray-600">
-                Many people think about homelessness as sleeping on the streets,
-                however, it is only 6% of the total homeless population. Read
-                more about homelessness in our article here.
+                Even if you're tight on cash, sharing info about
+                hidden homelessness can help others recognize if they qualify
+                for support and address their struggles in time. Your voice can
+                make a big difference, creating a ripple effect of awareness and
+                support within our community.
               </p>
             </div>
           </div>
