@@ -14,84 +14,115 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* NAVBAR */}
-      
+
       <header className="w-full border-b shadow-sm bg-white">
-      <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-        {/* Left: Logo */}
-        <div className="flex items-center gap-2 text-xl font-bold">
-          <Clock size={24} />
-          Snoozebox
+        <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+          {/* Left: Logo */}
+          <div className="flex items-center gap-2 text-xl font-bold">
+            <Clock size={24} />
+            Snoozebox
+          </div>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <Link href="#">Am I Homeless?</Link>
+            <Link href="#">Sleeping pods</Link>
+            <Link href="#">Showers</Link>
+            <Link
+              href="#"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            >
+              Chip in!
+            </Link>
+            <Link
+              href="#"
+              className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition"
+            >
+              Share love ♡
+            </Link>
+            <Link
+              href="#"
+              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
+            >
+              Get help
+            </Link>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link href="#">Am I Homeless?</Link>
-          <Link href="#">Sleeping pods</Link>
-          <Link href="#">Showers</Link>
-          <Link href="#" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-            Chip in!
-          </Link>
-          <Link href="#" className="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition">
-            Share love ♡
-          </Link>
-          <Link href="#" className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">
-            Get help
-          </Link>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className="md:hidden px-6 pb-4 space-y-3 text-sm font-medium">
-          <Link href="#" className="block">Am I Homeless?</Link>
-          <Link href="#" className="block">Sleeping pods</Link>
-          <Link href="#" className="block">Showers</Link>
-          <Link href="#" className="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-            Chip in!
-          </Link>
-          <Link href="#" className="block bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition">
-            Share love ♡
-          </Link>
-          <Link href="#" className="block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition">
-            Get help
-          </Link>
-        </div>
-      )}
-    </header>
+        {/* Mobile Dropdown Menu */}
+        {menuOpen && (
+          <div className="md:hidden px-6 pb-4 space-y-3 text-sm font-medium">
+            <Link href="#" className="block">
+              Am I Homeless?
+            </Link>
+            <Link href="#" className="block">
+              Sleeping pods
+            </Link>
+            <Link href="#" className="block">
+              Showers
+            </Link>
+            <Link
+              href="#"
+              className="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            >
+              Chip in!
+            </Link>
+            <Link
+              href="#"
+              className="block bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition"
+            >
+              Share love ♡
+            </Link>
+            <Link
+              href="#"
+              className="block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
+            >
+              Get help
+            </Link>
+          </div>
+        )}
+      </header>
 
       {/* HERO SECTION */}
-      <section className="px-6 py-12 max-w-5xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">SNOOZE BOX</h1>
-        <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
-          Emergency accommodation (sleeping pods & showers) for students
-          experiencing short-term homelessness such as moving out, escaping
-          family conflict, or needing a place to stay for a few nights.
-        </p>
-        <Link
-          href="#"
-          className="inline-block bg-black text-white px-6 py-3 rounded font-medium hover:bg-gray-800 transition"
-        >
-          Get Involved
-        </Link>
-
-        {/* Hero Image */}
-        <div className="mt-10">
+      <section className="px-6 py-12 max-w-6xl mx-auto">
+        {/* Hero Image with overlay text */}
+        <div className="relative w-full h-[500px] rounded-lg overflow-hidden">
           <Image
-            src="/nubelson-fernandes-3XDe63NEvZQ-unsplash.jpg" // ⬅️ Add your actual image here
+            src="/jon-tyson-zzzsVQvtpDA-unsplash.jpg"
             alt="Hero"
-            width={1000}
-            height={600}
-            className="rounded-lg w-full object-cover"
+            fill
+            className="object-cover"
           />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-30" />
+
+          {/* Overlay Text */}
+          <div className="absolute bottom-8 left-8 text-left text-white max-w-lg">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4">SNOOZE BOX</h1>
+            <p className="text-lg sm:text-xl font-medium leading-snug">
+              Shining a light on student homelessness—learn, quiz, and find a
+              safe spot when you need it!
+            </p>
+          </div>
+        </div>
+
+        {/* Button below the image */}
+        <div className="text-center mt-8">
+          <Link
+            href="#"
+            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-base font-medium hover:bg-blue-700 transition"
+          >
+            Get involved
+          </Link>
         </div>
       </section>
 

@@ -26,7 +26,7 @@ const bedGreenIcon = new L.Icon({
   popupAnchor: [0, -32],
 });
 
-// 🛏️ Occupied Pod Icon (sleeping icon)
+// 🛏️ Occupied Pod Icon (red)
 const bedRedIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/9567/9567116.png",
   iconSize: [32, 32],
@@ -35,9 +35,14 @@ const bedRedIcon = new L.Icon({
 });
 
 export default function MapComponent() {
+  const [isClient, setIsClient] = useState(false);
   const [stories, setStories] = useState([]);
   const [pods, setPods] = useState([]);
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,6 +62,8 @@ export default function MapComponent() {
 
     fetchData();
   }, []);
+
+  if (!isClient) return null; // Prevent SSR errors
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -98,7 +105,7 @@ export default function MapComponent() {
       </div>
 
       {/* 🗺️ Map */}
-      <MapContainer center={[-28.5, 134.5]} zoom={4.5} className="h-full w-full">
+      <MapContainer center={[-28.5, 134.5]} zoom={4.5} className="h-full w-full z-0">
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {/* 🧍 Homelessness Stories */}
