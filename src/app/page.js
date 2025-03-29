@@ -294,7 +294,7 @@ export default function HomePage() {
         {/* Right: Embedded Map */}
         {mounted && (
           <div className="w-full h-[320px] md:h-[400px] rounded-xl overflow-hidden">
-            <MapComponent />
+            <MapComponent showFilter={false} />
           </div>
         )}
       </section>

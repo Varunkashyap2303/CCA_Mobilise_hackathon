@@ -37,19 +37,17 @@ const bedRedIcon = new L.Icon({
   popupAnchor: [0, -32],
 });
 
-export default function MapComponent() {
+export default function MapComponent({ showFilter = true }) {
   const [isClient, setIsClient] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [stories, setStories] = useState([]);
   const [pods, setPods] = useState([]);
   const [filter, setFilter] = useState("all");
 
-  // Set client state
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Delay rendering the map to avoid hydration issues
   useEffect(() => {
     if (isClient) {
       const timeout = setTimeout(() => setShowMap(true), 0);
@@ -57,7 +55,6 @@ export default function MapComponent() {
     }
   }, [isClient]);
 
-  // Fetch data from MockAPI
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,54 +81,56 @@ export default function MapComponent() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* 🌟 Floating Panel (Legend + Filter) */}
-      <div className="absolute top-4 right-4 z-[999] bg-white p-4 rounded-lg shadow-lg text-sm space-y-3 w-[240px] border border-gray-200">
-        <h2 className="font-semibold text-gray-800">Map Info & Filters</h2>
+      {showFilter && (
+        <div className="absolute top-4 right-4 z-[999] bg-white p-4 rounded-lg shadow-lg text-sm space-y-3 w-[240px] border border-gray-200">
+          <h2 className="font-semibold text-gray-800">Map Info & Filters</h2>
 
-        {/* 🧭 Legend */}
-        <div className="space-y-2 text-gray-700">
-          <div className="flex items-center space-x-3">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2283/2283945.png"
-              alt="Available Pod"
-              className="w-5 h-5"
-            />
-            <span>Available Pod</span>
+          {/* 🧭 Legend */}
+          <div className="space-y-2 text-gray-700">
+            <div className="flex items-center space-x-3">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2283/2283945.png"
+                alt="Available Pod"
+                className="w-5 h-5"
+              />
+              <span>Available Pod</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/9567/9567116.png"
+                alt="Occupied Pod"
+                className="w-5 h-5"
+              />
+              <span>Occupied Pod</span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <span className="text-lg">📍</span>
+              <span>Homelessness Story</span>
+            </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/9567/9567116.png"
-              alt="Occupied Pod"
-              className="w-5 h-5"
-            />
-            <span>Occupied Pod</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <span className="text-lg">📍</span>
-            <span>Homelessness Story</span>
+
+          {/* 🎛️ Filter Dropdown */}
+          <div>
+            <label
+              htmlFor="filter"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Show:
+            </label>
+            <select
+              id="filter"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="text-sm border rounded px-2 py-1 w-full"
+            >
+              <option value="all">All</option>
+              <option value="stories">Stories Only</option>
+              <option value="available">Available Pods</option>
+              <option value="occupied">Occupied Pods</option>
+            </select>
           </div>
         </div>
-
-        {/* 🎛️ Filter Dropdown */}
-        <div>
-          <label
-            htmlFor="filter"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Show:
-          </label>
-          <select
-            id="filter"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="text-sm border rounded px-2 py-1 w-full"
-          >
-            <option value="all">All</option>
-            <option value="stories">Stories Only</option>
-            <option value="available">Available Pods</option>
-            <option value="occupied">Occupied Pods</option>
-          </select>
-        </div>
-      </div>
+      )}
 
       {/* 🗺️ Map */}
       <MapContainer
