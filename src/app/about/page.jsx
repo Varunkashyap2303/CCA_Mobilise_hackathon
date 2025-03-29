@@ -28,6 +28,7 @@ export default function AboutPage() {
       {/* NAVBAR */}
       <header className="w-full border-b shadow-sm bg-white">
         <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+          {/* Left: Logo */}
           <div className="flex items-center gap-2 text-xl font-bold">
             <Image
               src="/kangaroo.jpeg"
@@ -39,10 +40,11 @@ export default function AboutPage() {
             <span>Nestle-In</span>
           </div>
 
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            <Link href="/#am-i-homeless">Am I Homeless?</Link>
-            <Link href="/#sleeping-pods">Sleeping pods</Link>
-            <Link href="/#showers">Showers</Link>
+            <Link href="#">Am I Homeless?</Link>
+            <Link href="#">Sleeping pods</Link>
+            <Link href="#">Showers</Link>
             <Link
               href="#"
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
@@ -65,6 +67,7 @@ export default function AboutPage() {
             </Link>
           </nav>
 
+          {/* Mobile Menu Button */}
           <button
             className="md:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -74,26 +77,33 @@ export default function AboutPage() {
           </button>
         </div>
 
+        {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div className="md:hidden px-6 pb-4 space-y-3 text-sm font-medium">
-            <Link href="/#am-i-homeless">Am I Homeless?</Link>
-            <Link href="/#sleeping-pods">Sleeping pods</Link>
-            <Link href="/#showers">Showers</Link>
+            <Link href="#" className="block">
+              Am I Homeless?
+            </Link>
+            <Link href="#" className="block">
+              Sleeping pods
+            </Link>
+            <Link href="#" className="block">
+              Showers
+            </Link>
             <Link
               href="#"
-              className="block bg-blue-600 text-white px-4 py-2 rounded"
+              className="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
             >
               Chip in!
             </Link>
             <Link
               href="#"
-              className="block bg-purple-700 text-white px-4 py-2 rounded"
+              className="block bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800 transition"
             >
               Share love ♡
             </Link>
             <Link
-              href="https://forms.gle/TYuojmifQnKE4uam9"
-              className="block bg-black text-white px-4 py-2 rounded"
+              href="#"
+              className="block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
             >
               Get help
             </Link>
